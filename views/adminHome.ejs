@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="/adminhome.css" />
+    <link rel="stylesheet" href="/list.css" />
+</head>
+
+<body>
+    <%- include("component/adminHeader") %>
+        <div id="ribbon">
+            <div>
+                filter
+                <select id="filter" name="filter">
+                    <% for (const key of arr) { %>
+                        <option value="<%= key %>">
+                            <%= key %>
+                        </option>
+                        <% } %>
+                </select>
+            </div>
+            <div>
+                Sort
+                <select id="sorting" name="sorting">
+                    <option value="Time ASC">
+                        Time ASC
+                    </option>
+                    <option value="Time DSC">
+                        Time DSC
+                    </option>
+                    <option value="Priority DESC">
+                        Priority DESC
+                    </option>
+                </select>
+            </div>
+            <div>
+                <input type="search" id="search" name="search" placeholder="Search..">
+                <input type="button" id="searchBt" name="searchBt" value="Search">
+            </div>
+        </div>
+        <div id="ticketList">
+        </div>
+        <script src="/adminHome.js"></script>
+</body>
+
+</html>

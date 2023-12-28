@@ -1,0 +1,37 @@
+#ribbon{
+    display: flex;
+    padding: 10px;
+}
+#ribbon div{
+    margin: 5px;
+}
+
+#filter,#searchBt,#sorting{
+    margin-left: 5px;
+}
+
+
+
+
+/* *{
+    margin: 0px;
+    padding: 0px;
+} */
+/* #ticketList{
+    display: block;
+    width: 80vw;
+    min-height: 85vh;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+.ticketNode {
+    display: flex;
+    justify-content: space-between;
+    background: #b7b7d1;
+    color: white;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+} */

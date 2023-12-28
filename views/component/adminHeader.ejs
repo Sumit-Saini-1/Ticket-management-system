@@ -1,0 +1,46 @@
+<style>
+    a {
+        padding: 10px;
+        background-color: rgb(49, 47, 47);
+        text-decoration: none;
+        color: white;
+        margin: 5px 3px;
+        border-radius: 5px;
+    }
+    a:hover{
+        background-color: rgb(63, 60, 60);
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #1b1a1a;
+        color: white;
+        height: 6vh;
+    }
+
+    .div {
+        height: inherit;
+        display: flex;
+        align-items: center;
+    }
+    #logout{
+        /* padding: 10px; */
+        background-color: steelblue;
+        color: white;
+        margin: 5px 3px;
+    }
+    #logout:hover{
+        background-color: skyblue;
+    }
+</style>
+<nav>
+    <div class="div">
+        <nav><a href="/adminHome">Home </a> </nav>
+        <nav><a href="/createUser">Create User </a> </nav>
+    </div>
+    <div class="div">
+        <a href="/logout" id="">Logout </a>
+    </div>
+</nav>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+</head>
+<style>
+    *{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    margin: 10px;
+    height: 85vh;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.container form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    box-shadow: 0px 0px 8px grey;
+
+}
+.formelement{
+    padding: 3px;
+    margin: 2px;
+    width: 25vw;
+}
+</style>
+
+<body>
+    <%- include("component/adminHeader") %>
+        <div class="container">
+            <form method="post" >
+                <label class="formelement" for="username">Enter username</label>
+                <input class="formelement" type="text" id="username" name="username" placeholder="username">
+                <label class="formelement" for="password">Enter password</label>
+                <input class="formelement" type="password" id="password" name="password" placeholder="password">
+                <label class="formelement" for="name">Enter name</label>
+                <input class="formelement" type="text" id="name" name="name" placeholder="Name">
+                <label class="formelement" for="department">Select Department</label>
+                <select class="formelement" id="department" name="department">
+                    <option value="none" selected disabled hidden>Select Department</option>
+                    <% for (const key of arr) { %>
+                        <option value="<%= key %>">
+                            <%= key %>
+                        </option>
+                        <% } %>
+                </select>
+                <input class="formelement" type="submit" id="submit" value="submit" >
+            </form>
+        </div>
+        <script src="/createUser.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolve</title>
+    <link rel="stylesheet" href="/resolveTicket.css" />
+</head>
+
+<body>
+    <%- include("component/header.ejs") %>
+        <div class="container">
+            <div class="ticket-details">
+                <div class="action-bar">
+                    <% if(detailFor=="myTicket" ) { %>
+                        <% if(ticket.status=="In processing" ){ %>
+                            <button class="action-btn" id="<%= ticket._id %>">Chat</button>
+                            <button class="action-btn" id="<%= ticket._id %>">Close</button>
+                        <% } %>
+                        <% if(ticket.status=="waiting" ){ %>
+                            <button class="action-btn" id="<%= ticket._id %>">Cancel</button>
+                        <% } %>
+                        <% if(ticket.status=="resolved" ){ %>
+                        <% } %>
+                    <% } %>
+                </div>
+                <div class="ticket-data">
+                    <div>
+                        <b>Title: </b>
+                        <%= ticket.title %>
+                    </div>
+                    <div>
+                        <b>Description: </b>
+                        <%= ticket.description %>
+                    </div>
+                    <div>
+                        <b>Created By:</b>
+                        <%= ticket.createdby %>
+                    </div>
+                    <div>
+                        <b>Priority:</b>
+                        <% if( ticket.priority==0 ){ %>
+                            Low
+                            <% } else if( ticket.priority==1 ) { %>
+                                Medium
+                                <% } else{ %>
+                                    High
+                                    <% } %>
+                    </div>
+                    <div>
+                        <b>Time of creation:</b>
+                        <%= ticket.createdAt.toLocaleDateString('en-US', {year: 'numeric' ,month: 'long' ,
+                            day: 'numeric' ,hour: 'numeric' ,minute: 'numeric' }) %>
+                    </div>
+                    <div>
+                        <b>Ticket status:</b>
+                        <%= ticket.status %>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-container" id="chat-container">
+                <div class="chat-title">
+                    <%= ticket.title %>
+                </div>
+                <div id="messages-container"></div>
+                <% if(ticket.status=="In processing" ){ %>
+                    <form class="message-form">
+                        <input type="text" id="message-text" name="message-text" placeholder="Type here...">
+                        <input type="submit" name="submit" id="submit" value="Submit">
+                    </form>
+                <% } %>
+            </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/header.js"></script>
+        <script src="/resolveTicket.js"></script>
+</body>
+
+</html>

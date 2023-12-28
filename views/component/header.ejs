@@ -1,0 +1,94 @@
+<style>
+    a {
+        padding: 10px;
+        background-color: rgb(49, 47, 47);
+        text-decoration: none;
+        color: white;
+        margin: 5px 3px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: rgb(63, 60, 60);
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #1b1a1a;
+        color: white;
+        height: 6vh;
+    }
+
+    .div {
+        height: inherit;
+        display: flex;
+        align-items: center;
+    }
+
+    #logout {
+        /* padding: 10px; */
+        background-color: steelblue;
+        color: white;
+        margin: 5px 3px;
+    }
+
+    #logout:hover {
+        background-color: skyblue;
+    }
+
+    #notification-container {
+        visibility: hidden;
+        border: 1px solid black;
+        width: 20vw;
+        height: 40vh;
+        z-index: 1;
+        position: fixed;
+        top: 11vh;
+        right: 13vw;
+        background: #009938;
+    }
+
+    #notification-btn {
+        /* background-color: cyan; */
+        border: none;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+        overflow: auto;
+        /* margin-right: 20px; */
+    }
+
+    .notification-node {
+        display: block;
+        background: #b7b7d1;
+        color: white;
+        margin-top: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
+<nav>
+    <div class="div">
+        <a href="/">Home </a>
+        <a href="/resolvingTicket">Resolving Ticket</a>
+        <a href="/myTicket">My ticket</a>
+        <a href="/resolvedTicket">Resolved Ticket </a>
+        <a href="/ticket">Create Ticket </a>
+    </div>
+    <div class="div">
+        <a id="notification-btn">&#128276</a>
+        <a href="/profile">Profile </a>
+        <a href="/logout" id="logout">Logout </a>
+    </div>
+</nav>
+<div id="notification-container"></div>

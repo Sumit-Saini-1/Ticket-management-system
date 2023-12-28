@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create ticket</title>
+    <link rel="stylesheet" href="/ticket.css" />
+</head>
+
+<body>
+    <%- include("component/header") %>
+        <div class="container">
+            <form method="post" id="ticketForm">
+                <label class="formelement" for="title">Enter title of your complain</label>
+                <input class="formelement" type="text" id="title" name="title" placeholder="title">
+                <label class="formelement" for="description">Write your complain</label>
+                <input class="formelement" type="text" id="description" name="description" placeholder="write your complain">
+                <label class="formelement" for="category">Select category of complain</label>
+                <select class="formelement" id="category" name="category">
+                    <option value="none" selected disabled hidden>Select Category</option>
+                    <% for (const key of arr) { %>
+                        <option value="<%= key %>">
+                            <%= key %>
+                        </option>
+                        <% } %>
+                </select>
+                <label class="formelement" for="priority">Select priority of complain</label>
+                <select class="formelement" id="priority" name="priority">
+                    <option value="none" selected disabled hidden>Select Priority</option>
+                    <option value="0">
+                        Low
+                    </option>
+                    <option value="1">
+                        Medium
+                    </option>
+                    <option value="2">
+                        High
+                    </option>
+                </select>
+                <input class="formelement" type="submit" id="submit" value="submit">
+            </form>
+        </div>
+        <script src="/header.js"></script>
+        <script>
+            
+            const submit=document.getElementById("submit");
+            const title=document.getElementById("title");
+            const description=document.getElementById("description");
+            const category=document.getElementById("category");
+            const priority=document.getElementById("priority");
+
+            submit.addEventListener("click",(ev)=>{
+                ev.preventDefault();
+                const titleV=title.value.trim();
+                const descV=description.value.trim();
+                const categoryV=category.value;
+                const priorityV=priority.value;
+                if(!titleV){
+                    alert("enter title");
+                    return;
+                }
+                else if(!descV){
+                    alert("enter description");
+                    return;
+                }
+                else if(categoryV=="none"){
+                    alert("select category");
+                    return;
+                }
+                else if(priorityV=="none"){
+                    alert("select priority");
+                    return;
+                }
+                fetch("/ticket",{
+                    method:"POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        title:titleV,
+                        description: descV,
+                        category:categoryV,
+                        priority:priorityV
+                    })
+                }).then(function(response){
+                    if(response.status==200){
+                        title.value="";
+                        description.value="";
+                        category.value="none";
+                        priority.value="none";
+                    }
+                    else{
+                        console.log("Something went wrong");
+                    }
+                }).catch(function(err){
+                    alert("somthing went wrong");
+                });
+            });
+        </script>
+</body>
+
+</html>

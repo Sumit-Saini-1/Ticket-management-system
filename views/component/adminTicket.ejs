@@ -1,0 +1,131 @@
+<style>
+    .content-container {
+        width: 100%;
+        display: flex;
+    }
+
+    .ticket-details {
+        height: 88vh;
+        width: 40%;
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .action-bar {
+        height: 50px;
+        width: 100%;
+        background-color: rgb(32, 34, 33);
+    }
+
+    .action-btn {
+        padding: 10px;
+        margin-left: 30px;
+        border: none;
+        background-color: blue;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .ticket-data {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        background: #b7b7d1;
+        margin: 10px;
+    }
+
+    .chat-container {
+        visibility: hidden;
+        width: 60%;
+        height: 88vh;
+        background-color: #cfb5b5;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .chat-title {
+        width: initial;
+        justify-content: center;
+        background-color: #d6d6d6;
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    #messages-container {
+        display: block;
+        width: initial;
+        height: 83%;
+        overflow: auto;
+        margin: 5px;
+    }
+
+    li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0.5rem 1rem;
+        word-wrap: normal;
+    }
+
+    li:nth-child(odd) {
+        background: #efefef;
+    }
+</style>
+<div class="content-container">
+    <div class="ticket-details">
+        <div class="action-bar">
+            <button class="action-btn" id="<%= ticket._id %>">Chat</button>
+            <button class="action-btn" id="<%= ticket._id %>">Delete</button>
+            <button class="action-btn" id="<%= ticket._id %>">Close</button>
+        </div>
+        <div class="ticket-data">
+            <div>
+                <b>Title: </b>
+                <%= ticket.title %>
+            </div>
+            <div>
+                <b>Description: </b>
+                <%= ticket.description %>
+            </div>
+            <div>
+                <b>Department:</b>
+                <%= ticket.department %>
+            </div>
+            <div>
+                <b>Created By:</b>
+                <%= ticket.createdby %>
+            </div>
+            <div>
+                <b>Priority:</b>
+                <% if( ticket.priority==0 ){ %>
+                    Low
+                <% } if( ticket.priority==1 ) { %>
+                    Medium
+                <% } else{ %>
+                    High
+                <% } %>
+            </div>
+            <div>
+                <b>Time of creation:</b>
+                <%= ticket.createdAt.toLocaleDateString('en-US', {year: 'numeric' ,month: 'long' ,hour: 'numeric'
+                    ,minute: 'numeric' }) %>
+            </div>
+            <div>
+                <b>Ticket status:</b>
+                <%= ticket.status %>
+            </div>
+            <div>
+                <b>Resolver:</b>
+                <%= ticket.resolverid %>
+            </div>
+        </div>
+    </div>
+    <div class="chat-container" id="chat-container">
+        <div class="chat-title">
+            <%= ticket.title %>
+        </div>
+        <div id="messages-container"></div>
+    </div>
+</div>
+</div>

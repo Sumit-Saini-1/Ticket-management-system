@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#profileDetail{
+    width: inherit;
+    height: 20vh;
+    text-align: center;
+    padding: 10px;
+}
+#changePasswordContainer{
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#changeNameContainer{
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+input{
+    margin: 5px;
+}

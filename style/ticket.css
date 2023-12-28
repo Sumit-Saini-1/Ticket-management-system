@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    margin: 10px;
+    height: 85vh;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.container form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    box-shadow: 0px 0px 8px grey;
+
+}
+.formelement{
+    padding: 3px;
+    margin: 2px;
+    width: 25vw;
+}
